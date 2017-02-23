@@ -40,7 +40,7 @@ def shell(list):
             
             #set the current value and insert the number at list position
             list[position] = currentValue
-            
+        
         # After increments of size of gap
         # Get the floor division (integer) of the gap and store it back into gap
         # Finaly it just calculates the interval
