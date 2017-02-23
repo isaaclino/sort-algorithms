@@ -1,30 +1,51 @@
 #   SHELL algorithm
-#   Running time
+#   Running time:
+#   Best Runing time:       Omega(n logn)
+#   Average Running time:   Theta( n(logn)^2 )
+#   Worst Running time:     O( n(logn)^2 )
+#
+#   Shellsort allows the exchange of items that are far apart.
+#   It arranges the list of elements so that, starting anywhere,
+#   considering every hth element gives a sorted list.
+#
+#   How it works?
+#   Initialize the value of h
+#   Divide the list into smaller sub-list of equal interval h
+#   Sort these sub-lists using insertion sort
+#   Repeat until complete list is sorted
 
 import os
 
 def shell(list):
-    sublistcount = len(list)//2
-    while sublistcount > 0:
+    
+    # get floor division(integer only) from the original list lenght and store it in a gap
+    # to calculate the gap or interval
+    gap = len(list)//2
+    
+    while gap > 0:
         
-        for startposition in range(sublistcount):
-            gapInsertionSort(list,startposition,sublistcount)
+        # starts scan from initial starting position to the length for gap array
+        # for start in range(gap):
+        for i in range(len(list)):
             
-        print("After increments of size",sublistcount,"The list is",list)
-                
-        sublistcount = sublistcount // 2
+            currentValue = list[i]
+            position = i
+            
+            # until there is no current gap and current value is smaller that position
+            while position>=gap and list[position-gap]>currentValue:
+            
+                # It shifts the elements to the right
+                list[position]=list[position-gap]
+                position = position-gap
+            
+            #set the current value and insert the number at list position
+            list[position] = currentValue
+            
+        # After increments of size of gap
+        # Get the floor division (integer) of the gap and store it back into gap
+        # Finaly it just calculates the interval
+        gap = gap // 2
 
-def gapInsertionSort(list,start,gap):
-    for i in range(start+gap,len(list),gap):
-        
-        currentvalue = list[i]
-        position = i
-        
-        while position>=gap and list[position-gap]>currentvalue:
-            list[position]=list[position-gap]
-            position = position-gap
-        
-        list[position]=currentvalue
 
 def main():
     
@@ -38,7 +59,6 @@ def main():
     print "\ncalling shell sort..."
     shell(list)
     print list
-
 
 if __name__ == '__main__': main()
 
