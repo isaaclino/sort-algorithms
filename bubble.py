@@ -15,7 +15,7 @@
 # It happens on any pass and in the best case it will happend in the first pass.
 # To track this process, a boolean is created, in this case is called 'swapped', which
 # it tracks how many times is swapped and returns from the fucntion when inner loop is not set
-# "THIS ONLY IMPROVES BEST CASE TO (n), Worst case still (n^2)"
+# "THIS ONLY IMPROVES BEST CASE TO (n), Worst case (n^2)"
 
 def bubble(mylist):
 
