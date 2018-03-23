@@ -17,44 +17,28 @@
 # it tracks how many times is swapped and returns from the fucntion when inner loop is not set
 # "THIS ONLY IMPROVES BEST CASE TO (n), Worst case still (n^2)"
 
-import os
-
-def bubble(list):
+def bubble(mylist):
 
     swapped = True
-
-    # continue sorting until is false
     while swapped:
 
-        # start by assuming nothing is sorted
         swapped = False
-
-        #loop the entire list
-        for i in range(len(list)-1):
-
-            #saves the currnet position
-            cur = list[i]
-            j = i+1
-
-            if list[i] > list [j]:
-
-                # do a swap and reset swap to True if something is sorted
-                list[i]=list[j]
-                list[j]=cur
+        for i in range(len(mylist)-1):
+            
+            if mylist[i] > mylist[i+1]:
+        
+                mylist[i], mylist[i+1] = mylist[i+1], mylist[i]
                 swapped = True
 
-    print list
+    return mylist
+
 
 def main():
-
-    os.system('clear')
-    list = [1,3,5,7,34,22,1,23,98,43,12,54,23,12,75,22,56,9,90,2,3,6,34,54,22,1]
+    mylist = map(int, raw_input("Enter a list of numbers to be sorted: ").split(' '))
     
-    print "\nBubble Sort\n"
-    print "\nOriginal list: "
-    print list
-    
-    print "\ncalling bubble sort..."
-    bubble(list)
+    print "Unsorted list: ", mylist
+    print "Sorted list:   ", bubble(mylist)
 
-if __name__ == '__main__': main()
+
+if __name__=="__main__":main()
+
